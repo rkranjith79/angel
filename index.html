@@ -19,13 +19,13 @@
 
   <style>
     :root {
-      --bg-0: #05050f;
-      --bg-1: #120a2e;
-      --bg-2: #241056;
+      --bg-0: #02040a;
+      --bg-1: #050912;
+      --bg-2: #0a1322;
 
       --pink: #ff4d94;
-      --violet: #a855f7;
-      --cyan: #38bdf8;
+      --violet: #a78bfa;
+      --cyan: #64e6d1;
       --gold: #ffc94a;
       --green: #34d399;
 
@@ -69,9 +69,11 @@
     body {
       overflow: hidden;
       background:
-        radial-gradient(120% 90% at 50% -10%, var(--bg-2) 0%, transparent 55%),
-        radial-gradient(100% 80% at 110% 110%, #3b0f63 0%, transparent 60%),
-        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 70%);
+        radial-gradient(ellipse at 50% 52%, rgba(50, 115, 152, .12), transparent 34%),
+        radial-gradient(ellipse at 8% 12%, rgba(45, 186, 174, .09), transparent 36%),
+        radial-gradient(ellipse at 90% 82%, rgba(124, 82, 216, .1), transparent 42%),
+        radial-gradient(ellipse at 70% 0%, var(--bg-2), transparent 58%),
+        linear-gradient(145deg, #040812 0%, var(--bg-0) 66%, #070a12 100%);
       color: var(--ink);
       font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 16px;
@@ -88,7 +90,7 @@
       z-index: 0;
       pointer-events: none;
       filter: blur(90px) saturate(140%);
-      opacity: 0.5;
+      opacity: 0.38;
     }
 
     .blob {
@@ -100,7 +102,7 @@
     .blob.b1 {
       width: 62vw;
       height: 62vw;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.9), transparent 68%);
+      background: radial-gradient(circle, rgba(55, 133, 154, 0.48), transparent 68%);
       top: -8%;
       left: -14%;
     }
@@ -108,7 +110,7 @@
     .blob.b2 {
       width: 74vw;
       height: 74vw;
-      background: radial-gradient(circle, rgba(255, 77, 148, 0.85), transparent 68%);
+      background: radial-gradient(circle, rgba(46, 79, 113, 0.38), transparent 68%);
       bottom: -26%;
       right: -18%;
     }
@@ -116,7 +118,7 @@
     .blob.b3 {
       width: 56vw;
       height: 56vw;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.8), transparent 68%);
+      background: radial-gradient(circle, rgba(65, 72, 117, 0.42), transparent 68%);
       top: 28%;
       right: -6%;
     }
@@ -127,7 +129,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.16;
+      opacity: 0.055;
       background-image:
         linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
@@ -157,8 +159,8 @@
       position: absolute;
       user-select: none;
       will-change: transform;
-      opacity: 0.55;
-      filter: saturate(115%) drop-shadow(0 10px 26px rgba(168, 85, 247, 0.45));
+      opacity: 0.78;
+      filter: saturate(135%) drop-shadow(0 0 18px rgba(100, 230, 209, 0.52));
     }
 
     .float-item .inner {
@@ -295,12 +297,12 @@
       font-size: clamp(2.3rem, 12.4vw, 3.9rem);
       line-height: 1.06;
       word-break: break-word;
-      background: linear-gradient(115deg, #ffffff 0%, #ffe8a8 28%, #ffc94a 50%, #ff8fb8 72%, #ffe8a8 100%);
+      background: linear-gradient(105deg, #78f4e6 0%, #f7fbff 21%, #ffe080 42%, #ff83c5 64%, #b7a3ff 82%, #78f4e6 100%);
       background-size: 220% 100%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 8px 34px rgba(255, 201, 74, 0.35));
+      filter: drop-shadow(0 8px 34px rgba(208, 227, 239, 0.28));
       animation:
         rise 0.85s 0.26s var(--ease-pop) both,
         shimmer 7s 1.2s ease-in-out infinite;
@@ -609,27 +611,136 @@
     body.launched .launch-screen { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .launch-btn {
-      min-width: min(78vw, 300px);
-      padding: 20px 28px;
-      border: 1px solid rgba(171, 142, 255, .7);
-      border-radius: 999px;
+      width: min(54vw, 260px);
+      aspect-ratio: 1;
+      padding: 25px;
+      border: 1px solid rgba(196, 181, 253, .75);
+      border-radius: 50%;
       color: white;
-      background: radial-gradient(circle at 30% 20%, #bb83ff, #6839d5 50%, #27105b);
-      box-shadow: 0 0 24px #8b5cf6, 0 0 80px #5123a8;
-      font: 900 1rem "Nunito", sans-serif;
-      letter-spacing: .14em;
+      background: radial-gradient(circle at 34% 28%, #e6fffa 0 1%, #92c9c0 5%, #5d8390 19%, #3d4f68 38%, #171c2a 65%, #080b12 72%);
+      box-shadow: 0 0 28px rgba(112,231,220,.38), 0 0 90px rgba(53,73,91,.55), inset -22px -20px 40px rgba(0,0,0,.75), inset 12px 10px 24px rgba(255,255,255,.18);
+      font: 900 clamp(.72rem, 2.6vw, .95rem) "Nunito", sans-serif;
+      letter-spacing: .1em;
       text-transform: uppercase;
       cursor: pointer;
       animation: launchPulse 2.4s ease-in-out infinite;
     }
 
-    @keyframes launchPulse { 50% { transform: scale(1.05); box-shadow: 0 0 38px #c084fc, 0 0 110px #713be0; } }
+    @keyframes launchPulse { 50% { transform: scale(1.05); box-shadow: 0 0 32px rgba(194,226,223,.42), 0 0 96px rgba(102,143,164,.38); } }
 
     body.launched #bg-blobs { display: block; }
     body.launched #bg-grid { display: block; }
     body.launched #dust-canvas, body.launched #decor, body.launched #fx-canvas,
     body.launched .stage, body.launched .sound-btn { display: initial; }
     body.launched .stage { display: flex; }
+
+    .orbit-scene {
+      position: fixed;
+      z-index: 4;
+      left: 50%;
+      top: 56%;
+      width: min(96vw, 590px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%) scale(.55);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.4s ease, transform 1.8s cubic-bezier(.16, 1, .3, 1);
+      filter: drop-shadow(0 0 50px rgba(103, 232, 220, .2));
+    }
+    body.launched .orbit-scene { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .planet-halo {
+      position: absolute;
+      inset: 25%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(112, 170, 175, .13), rgba(76, 91, 125, .08) 48%, transparent 72%);
+      filter: blur(20px);
+      animation: haloBreathe 4s ease-in-out infinite alternate;
+    }
+    .birthday-planet {
+      position: absolute;
+      width: 43%;
+      aspect-ratio: 1;
+      left: 28.5%;
+      top: 28.5%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at 28% 22%, rgba(255,255,255,.96), transparent 3%),
+        radial-gradient(ellipse at 66% 35%, rgba(255,255,255,.58), transparent 2%),
+        radial-gradient(ellipse at 28% 36%, #a7f3e5 0 4%, transparent 19%),
+        radial-gradient(ellipse at 76% 67%, #70829d 0 12%, transparent 27%),
+        radial-gradient(circle at 35% 28%, #9cbfba 0%, #557b87 26%, #3b4b69 58%, #151a28 78%);
+      box-shadow: inset -30px -24px 48px rgba(5, 8, 27, .8), inset 18px 14px 32px rgba(255,255,255,.22), 0 0 38px rgba(100,230,209,.35), 0 0 110px rgba(126,98,244,.26);
+      animation: planetBob 5.5s ease-in-out infinite;
+    }
+    .birthday-planet::before, .birthday-planet::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(227,255,250,.12);
+      border-radius: 50%;
+      transform: rotate(-28deg) scaleY(.35);
+      inset: 13% -14%;
+    }
+    .birthday-planet::after { inset: 25% -24%; border-color: rgba(214,190,255,.13); transform: rotate(28deg) scaleY(.32); }
+    .cake-core {
+      z-index: 1;
+      font-size: clamp(48px, 13vw, 88px);
+      filter: drop-shadow(0 0 22px rgba(255, 231, 163, .9));
+      animation: cakeGlow 2.4s ease-in-out infinite alternate;
+    }
+    .orbit-ring {
+      position: absolute;
+      left: 3%; top: 34%; width: 94%; height: 32%;
+      border: 1px solid rgba(188, 239, 255, .56);
+      border-radius: 50%;
+      transform: rotate(-24deg);
+      box-shadow: 0 0 16px rgba(112,231,220,.24), inset 0 0 16px rgba(167,139,250,.12);
+    }
+    .orbit-ring.ring-two { left: 13%; top: 22%; width: 74%; height: 56%; transform: rotate(58deg); border-color: rgba(178,207,214,.2); }
+    .satellite-track {
+      position: absolute;
+      inset: 5%;
+      border-radius: 50%;
+      animation: orbitTurn 24s linear infinite;
+    }
+    .satellite {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: clamp(43px, 10vw, 66px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(224,255,251,.42);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.18), rgba(42,57,67,.64) 48%, rgba(7,11,18,.92));
+      box-shadow: 0 0 24px rgba(100,230,209,.28), inset 0 1px 6px rgba(255,255,255,.32);
+      font-size: clamp(21px, 5vw, 33px);
+      animation: satelliteCounter 24s linear infinite;
+    }
+    .satellite:nth-child(1) { left: 45%; top: -3%; }
+    .satellite:nth-child(2) { right: -2%; top: 46%; }
+    .satellite:nth-child(3) { left: 43%; bottom: -3%; }
+    .galaxy-credit {
+      position: fixed;
+      z-index: 70;
+      left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+      transform: translateY(12px) translateX(-50%);
+      color: rgba(232, 244, 255, .68);
+      font: 700 12px "Nunito", sans-serif;
+      letter-spacing: .08em;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity .8s ease .9s, transform .8s ease .9s;
+      white-space: nowrap;
+    }
+    body.launched .galaxy-credit { opacity: 1; transform: translateY(0) translateX(-50%); }
+    .galaxy-credit:hover { color: #a7f3e5; text-shadow: 0 0 14px #70e7dc; }
+    @keyframes orbitTurn { to { transform: rotate(360deg); } }
+    @keyframes satelliteCounter { to { transform: rotate(-360deg); } }
+    @keyframes planetBob { 50% { translate: 0 -8px; } }
+    @keyframes haloBreathe { to { scale: 1.18; opacity: .7; } }
+    @keyframes cakeGlow { to { filter: drop-shadow(0 0 34px rgba(255,231,163,1)); scale: 1.08; } }
 
     .space-status {
       margin: 12px auto 0;
@@ -641,8 +752,135 @@
     }
 
     body:not(.launched) .space-status { display: none; }
+    body:not(.launched) .orbit-scene, body:not(.launched) .galaxy-credit { display: none; }
     body.blast-mode .card { box-shadow: 0 0 50px rgba(168,85,247,.5), var(--shadow-card), inset 0 1px 0 rgba(255,255,255,.25); }
-    body.blast-mode .float-item { filter: saturate(160%) drop-shadow(0 0 18px rgba(255,201,74,.95)); }
+    body.blast-mode .float-item { filter: saturate(180%) drop-shadow(0 0 22px rgba(255,201,74,.98)); }
+
+    /* Make the celebration feel like an open galaxy, not a UI card. */
+    .card {
+      width: min(100%, 720px);
+      max-width: 720px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      overflow: visible;
+      position: absolute;
+      top: 27%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: min(78vw, 540px);
+      aspect-ratio: 1;
+      left: 50%;
+      top: 50%;
+      border: 1px solid rgba(100, 230, 209, .34);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-18deg) scaleY(.42);
+      box-shadow: 0 0 36px rgba(100,230,209,.28), inset 0 0 42px rgba(124,82,216,.2);
+      pointer-events: none;
+      animation: orbitSpin 28s linear infinite;
+    }
+    @keyframes orbitSpin { to { rotate: 360deg; } }
+    .card::after, .orbit-scene { display: none !important; }
+    .card::before, .kicker, .divider, .message, .space-status,
+    .cta, .dock-label, .dock, .hint, .sound-btn { display: none !important; }
+    .greeting {
+      margin: 0;
+      font-size: clamp(1.2rem, 5.4vw, 2.7rem);
+      letter-spacing: .16em;
+      color: #f4f7f9;
+      text-shadow: 0 0 22px rgba(224,239,255,.4);
+    }
+    .name {
+      margin-top: 8px;
+      max-width: 96vw;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(2.8rem, 13vw, 6.2rem);
+      line-height: 1.08;
+      white-space: normal;
+      filter: drop-shadow(0 0 30px rgba(123,235,231,.42));
+    }
+    body.launched .stage { pointer-events: none; }
+    body.launched .card { animation: galaxyFloat 7s ease-in-out infinite; }
+    @keyframes galaxyFloat { 50% { transform: translate(-50%, calc(-50% - 10px)) scale(1.025); } }
+    @media (max-height: 620px) {
+      .orbit-scene { width: min(74vh, 520px); top: 55%; }
+      .card { top: 22%; transform: translate(-50%, -50%) scale(.82); }
+    }
+
+    .orbit-system {
+      position: fixed;
+      z-index: 6;
+      left: 50%; top: 56%;
+      width: min(98vw, 790px);
+      height: min(74vh, 660px);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease .35s;
+    }
+    body.launched .orbit-system { opacity: 1; }
+    .orbit-path {
+      position: absolute;
+      left: 50%; top: 50%;
+      border: 1px solid rgba(218, 235, 244, .23);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-17deg);
+      box-shadow: 0 0 12px rgba(190, 226, 232, .055);
+    }
+    .orbit-outer { width: 98%; height: 68%; }
+    .orbit-mid { width: 78%; height: 54%; transform: translate(-50%, -50%) rotate(19deg); border-color: rgba(195, 221, 235, .2); }
+    .orbit-inner { width: 58%; height: 40%; transform: translate(-50%, -50%) rotate(-28deg); border-color: rgba(231, 233, 247, .2); }
+    .orbit-core { width: 39%; height: 27%; transform: translate(-50%, -50%) rotate(22deg); border-color: rgba(195, 221, 235, .16); }
+    .orbit-runner { position: absolute; inset: 0; animation: orbitGo var(--orbit-speed) linear infinite; }
+    .orbit-item {
+      position: absolute;
+      top: 0; left: 50%;
+      display: grid;
+      place-items: center;
+      width: var(--satellite-size);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(220, 239, 245, .72);
+      border-radius: 50%;
+      color: #f5fcff;
+      background: radial-gradient(circle at 32% 23%, rgba(255,255,255,.22), rgba(22,29,40,.96) 49%, #05070b 83%);
+      box-shadow: 0 0 20px rgba(182, 221, 232, .22), inset 0 1px 7px rgba(255,255,255,.17);
+      animation: orbitCounter var(--orbit-speed) linear infinite;
+    }
+    .orbit-item svg { width: 59%; height: 59%; overflow: visible; }
+    .orbit-item .bus-glass { fill: #9ee7e1; }
+    .orbit-item .bus-body { fill: #e7b976; }
+    .orbit-item .ink-line { fill: none; stroke: #f7fbff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .orbit-item .bag-fill { fill: #91d9d2; }
+    .orbit-item .book-fill { fill: #efc17b; }
+    .orbit-item .book-fill.alt { fill: #c5b2fb; }
+    .orbit-item .lens { fill: none; stroke: #bcebe7; stroke-width: 3.5; }
+    .orbit-path.orbit-outer { --orbit-speed: 32s; --satellite-size: clamp(52px, 13vw, 76px); }
+    .orbit-path.orbit-mid { --orbit-speed: 25s; --satellite-size: clamp(48px, 11vw, 67px); }
+    .orbit-path.orbit-inner { --orbit-speed: 19s; --satellite-size: clamp(44px, 9.5vw, 58px); }
+    .orbit-path.orbit-core { --orbit-speed: 14s; --satellite-size: clamp(40px, 8.5vw, 50px); }
+    @keyframes orbitGo { to { transform: rotate(360deg); } }
+    @keyframes orbitCounter { to { transform: translate(-50%, -50%) rotate(-360deg); } }
+    .name-break { display: none; }
+    @media (max-width: 600px) {
+      .orbit-system { width: 100vw; height: min(66vh, 540px); top: 57%; }
+      .orbit-outer { width: 78%; height: 55%; }
+      .orbit-mid { width: 64%; height: 46%; }
+      .orbit-inner { width: 50%; height: 36%; }
+      .orbit-core { width: 37%; height: 26%; }
+      .name-break { display: block; }
+    }
+    @media (max-height: 620px) { .orbit-system { height: 65vh; top: 56%; } }
 
     /* ---------- hint ---------- */
 
@@ -709,6 +947,7 @@
       .blob,
       .float-item,
       .card,
+      .card::after,
       .kicker,
       .greeting,
       .name,
@@ -731,7 +970,7 @@
 
 <body>
   <div class="launch-screen" id="launchScreen">
-    <button class="launch-btn" id="launchBtn" type="button"><i class="bi bi-rocket-takeoff-fill"></i> Launch Birthday Galaxy</button>
+      <button class="launch-btn" id="launchBtn" type="button" aria-label="Open birthday galaxy"></button>
   </div>
   <div id="bg-blobs" aria-hidden="true">
     <div class="blob b1"></div>
@@ -744,63 +983,29 @@
   <div id="decor" aria-hidden="true"></div>
   <canvas id="fx-canvas" aria-hidden="true"></canvas>
 
-  <button class="sound-btn" id="soundBtn" type="button" data-on="false" aria-label="Toggle sound"
-    aria-pressed="false">
-    <i class="bi bi-volume-mute-fill"></i>
-  </button>
+  <div class="orbit-system" aria-hidden="true">
+    <div class="orbit-path orbit-outer"><div class="orbit-runner"><span class="orbit-item">
+      <svg viewBox="0 0 64 64"><path class="bus-body" d="M13 10h38a6 6 0 0 1 6 6v31H7V16a6 6 0 0 1 6-6Z"/><path class="bus-glass" d="M13 16h15v13H13zm21 0h17v13H34z"/><path class="ink-line" d="M9 36h46M17 47v5m30-5v5"/><circle cx="18" cy="48" r="5" fill="#111923"/><circle cx="46" cy="48" r="5" fill="#111923"/></svg>
+    </span></div></div>
+    <div class="orbit-path orbit-mid"><div class="orbit-runner"><span class="orbit-item">
+      <svg viewBox="0 0 64 64"><path class="bag-fill" d="M21 15v-3a11 11 0 0 1 22 0v3h7a5 5 0 0 1 5 5v31a6 6 0 0 1-6 6H15a6 6 0 0 1-6-6V20a5 5 0 0 1 5-5h7Z"/><path class="ink-line" d="M21 16v5m22-5v5M20 31h24v15H20a7 7 0 0 1 0-15Zm11 0v15"/></svg>
+    </span></div></div>
+    <div class="orbit-path orbit-inner"><div class="orbit-runner"><span class="orbit-item">
+      <svg viewBox="0 0 64 64"><path class="book-fill" d="M8 14a5 5 0 0 1 5-5h17v42H13a5 5 0 0 0-5 5V14Z"/><path class="book-fill alt" d="M56 14a5 5 0 0 0-5-5H34v42h17a5 5 0 0 1 5 5V14Z"/><path class="ink-line" d="M13 17h11m16 0h11M30 10v41m4-41v41"/></svg>
+    </span></div></div>
+    <div class="orbit-path orbit-core"><div class="orbit-runner"><span class="orbit-item">
+      <svg viewBox="0 0 64 64"><circle class="lens" cx="19" cy="32" r="13"/><circle class="lens" cx="45" cy="32" r="13"/><path class="ink-line" d="M32 29c-3-4-6-4-9-2m18 0c-3-2-6-2-9 2M6 28l-4-2m56 2 4-2"/></svg>
+    </span></div></div>
+  </div>
 
   <main class="stage">
     <section class="card">
-      <span class="kicker"><i class="bi bi-balloon-heart-fill"></i> Birthday Edition</span>
-
       <h1 class="greeting">Happy Birthday</h1>
-      <p class="name">122</p>
-
-      <div class="divider" aria-hidden="true">
-        <span></span><i class="bi bi-stars"></i><span></span>
-      </div>
-
-      <p class="message">
-        Another year of main character energy unlocked! Hope this one is filled with chaos, cake, good
-        grades, sick specs, bussin' vibes and the best people ever!
-      </p>
-      <p class="space-status" id="spaceStatus">Birthday galaxy online · music at 20%</p>
-
-      <div class="cta">
-        <button class="btn primary" type="button" id="blastBtn">
-          <i class="bi bi-party-popper-fill"></i> Blast The Party
-        </button>
-        <button class="btn secondary" type="button" id="calmBtn">
-          <i class="bi bi-moon-stars-fill"></i> Chill Mode
-        </button>
-      </div>
-
-      <span class="dock-label">Tap an effect</span>
-
-      <div class="dock">
-        <button class="chip" type="button" data-action="spark" data-tone="gold" data-glow>
-          <i class="bi bi-stars"></i><span>Sparkles</span>
-        </button>
-        <button class="chip" type="button" data-action="confetti" data-tone="pink" data-glow>
-          <i class="bi bi-balloon-fill"></i><span>Confetti</span>
-        </button>
-        <button class="chip" type="button" data-action="balloons" data-tone="cyan" data-glow>
-          <i class="bi bi-gift-fill"></i><span>Balloons</span>
-        </button>
-        <button class="chip" type="button" data-action="shake" data-tone="violet" data-glow>
-          <i class="bi bi-lightning-charge-fill"></i><span>Shake</span>
-        </button>
-        <button class="chip" type="button" data-action="music" data-tone="green" data-glow>
-          <i class="bi bi-music-note-beamed"></i><span>Vibe</span>
-        </button>
-        <button class="chip" type="button" data-action="spice" data-tone="sky" data-glow>
-          <i class="bi bi-cup-hot-fill"></i><span>Spice</span>
-        </button>
-      </div>
-
-      <p class="hint">Move your finger or tap anywhere for <b>glitter</b></p>
+      <p class="name">Keerthana<br class="name-break" /> Rathinam</p>
     </section>
   </main>
+
+  <a class="galaxy-credit" href="https://github.com/rkranjith79" target="_blank" rel="noopener noreferrer">made by iamracke ❤️</a>
 
   <audio id="track" src="sunflower.mp3" preload="auto" loop></audio>
 
@@ -818,6 +1023,8 @@
       let H = 0;
       let spicy = true;
       let soundOn = false;
+      let launched = false;
+      let automaticTimer = null;
 
       /* ==================== canvases ==================== */
 
@@ -844,12 +1051,13 @@
         fx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
         seedDust();
+        seedGalaxy();
         layoutDecor();
       }
 
       /* ==================== glow sprite ==================== */
 
-      const SPARK_COLORS = ["#ffffff", "#fff3c4", "#ffc9e0", "#c8e6ff", "#e2ccff"];
+      const SPARK_COLORS = ["#ffffff", "#e8f3f5", "#fff1c4", "#bfd8e2", "#d9e0ec"];
 
       const glowSprites = SPARK_COLORS.map((color) => {
         const size = 64;
@@ -875,10 +1083,12 @@
       let sparks = [];
       let confetti = [];
       let dust = [];
+      let galaxyStars = [];
+      let galaxyRotation = 0;
 
       const MAX_SPARKS = 320;
-      const MAX_CONFETTI = 420;
-      const CONFETTI_COLORS = ["#ff4d94", "#a855f7", "#38bdf8", "#34d399", "#ffc94a", "#ffffff"];
+      const MAX_CONFETTI = 680;
+      const CONFETTI_COLORS = ["#ff6fba", "#bca2ff", "#65e7d5", "#f8fbff", "#ffd166", "#78b9ff", "#ff9d72"];
 
       function addSpark(x, y, opts) {
         const o = opts || {};
@@ -994,6 +1204,25 @@
         }
       }
 
+      function seedGalaxy() {
+        const count = W < 600 ? 1300 : 1900;
+        const colors = ["#ffffff", "#e8f1f7", "#fff0d0", "#b9d7eb", "#dce5ff"];
+        galaxyStars = [];
+        for (let i = 0; i < count; i++) {
+          const arm = randInt(0, 4);
+          const radius = Math.pow(Math.random(), 1.08);
+          galaxyStars.push({
+            radius,
+            angle: arm * Math.PI * 2 / 5 + radius * 8.6 + rand(-.24, .24),
+            size: Math.random() < .06 ? rand(1.9, 3.1) : rand(.62, 1.7),
+            alpha: rand(.32, .96),
+            color: pick(colors),
+            phase: rand(0, Math.PI * 2),
+            speed: rand(.008, .035)
+          });
+        }
+      }
+
       function updateDust() {
         for (const d of dust) {
           d.x += d.vx;
@@ -1019,8 +1248,46 @@
           dustCtx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
           dustCtx.fill();
         }
+        drawGalaxy();
         dustCtx.globalAlpha = 1;
         dustCtx.globalCompositeOperation = "source-over";
+      }
+
+      function drawGalaxy() {
+        const cx = W * .5;
+        const cy = H * .56;
+        const radius = Math.min(Math.min(W, H) * .64, 900);
+        const bloom = dustCtx.createRadialGradient(cx, cy, 0, cx, cy, radius * .68);
+        bloom.addColorStop(0, "rgba(255,250,239,.36)");
+        bloom.addColorStop(.12, "rgba(208,226,244,.2)");
+        bloom.addColorStop(.42, "rgba(120,161,190,.075)");
+        bloom.addColorStop(1, "rgba(4,8,15,0)");
+        dustCtx.fillStyle = bloom;
+        dustCtx.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
+        if (!reduceMotion) galaxyRotation += .00072;
+
+        for (const star of galaxyStars) {
+          const theta = star.angle + galaxyRotation;
+          const r = star.radius * radius;
+          const x = cx + Math.cos(theta) * r;
+          const y = cy + Math.sin(theta) * r * .78;
+          star.phase += star.speed;
+          const twinkle = .68 + .32 * Math.sin(star.phase);
+          dustCtx.globalAlpha = star.alpha * twinkle;
+          dustCtx.fillStyle = star.color;
+          dustCtx.beginPath();
+          dustCtx.arc(x, y, star.size, 0, Math.PI * 2);
+          dustCtx.fill();
+          if (star.size > 2.2) {
+            dustCtx.globalAlpha = .16 * twinkle;
+            dustCtx.beginPath();
+            dustCtx.arc(x, y, star.size * 5.2, 0, Math.PI * 2);
+            dustCtx.fill();
+            dustCtx.globalAlpha = .8 * twinkle;
+            dustCtx.fillRect(x - star.size * 3.5, y - .35, star.size * 7, .7);
+            dustCtx.fillRect(x - .35, y - star.size * 3.5, .7, star.size * 7);
+          }
+        }
       }
 
       /* ==================== sparkles (front layer) ==================== */
@@ -1162,15 +1429,18 @@
       let floaters = [];
 
       const DECOR = [
-        { key: "candle", size: "" },
-        { key: "glasses", size: "med" },
+        { key: "star", size: "" },
+        { key: "cake", size: "med" },
         { key: "bus", size: "big" },
-        { key: "cake", size: "" },
+        { key: "glasses", size: "med" },
         { key: "bag", size: "" },
         { key: "notes", size: "med" },
-        { key: "star", size: "" },
+        { key: "candle", size: "" },
         { key: "balloon", size: "" },
-        { key: "bulb", size: "" }
+        { key: "bulb", size: "" },
+        { key: "cake", size: "" },
+        { key: "star", size: "med" },
+        { key: "glasses", size: "" }
       ];
 
       function svgFor(key) {
@@ -1248,7 +1518,8 @@
         floaters.forEach((f) => decorLayer.removeChild(f.el));
         floaters = [];
 
-        const count = W < 420 ? 9 : 13;
+        if (!launched) return;
+        const count = 0;
         const list = [];
         for (let i = 0; i < count; i++) list.push(DECOR[i % DECOR.length]);
 
@@ -1271,8 +1542,9 @@
             rotAmp: rand(0.3, 1.4),
             depth: left ? rand(6, 18) : rand(-18, -6),
             o: 0,
-            to: rand(0.34, 0.62)
+            to: rand(0.58, 0.88)
           });
+          sparkleAt(el, 8);
         });
       }
 
@@ -1360,7 +1632,10 @@
           return true;
         }
         const AC = window.AudioContext || window.webkitAudioContext;
-        if (!AC) return false;
+        if (!AC) {
+          track.volume = 0.2;
+          return true;
+        }
         try {
           audioCtx = new AC();
           const src = audioCtx.createMediaElementSource(track);
@@ -1368,11 +1643,12 @@
           filter.type = "lowpass";
           filter.frequency.value = spicy ? 20000 : 1100;
           gain = audioCtx.createGain();
-          gain.gain.value = 0.9;
+          gain.gain.value = 0.2;
           src.connect(filter).connect(gain).connect(audioCtx.destination);
         } catch (e) {
           audioCtx = null;
-          return false;
+          track.volume = 0.2;
+          return true;
         }
         return true;
       }
@@ -1384,12 +1660,12 @@
           filter.frequency.setTargetAtTime(on ? 20000 : 1100, t, 0.2);
           filter.Q.setTargetAtTime(on ? 0.7 : 1.6, t, 0.2);
         }
-        if (gain) gain.gain.setTargetAtTime(on ? 0.9 : 0.45, t, 0.25);
+        if (gain) gain.gain.setTargetAtTime(on ? (document.body.classList.contains("blast-mode") ? 0.42 : 0.2) : 0.2, t, 0.25);
       }
 
       function play() {
         if (!ensureAudio()) return false;
-        track.volume = 0.9;
+        track.volume = 0.2;
         const p = track.play();
         if (p && p.catch) p.catch(() => {});
         return true;
@@ -1402,15 +1678,16 @@
 
       function setSoundUI(on) {
         soundOn = on;
-        soundBtn.dataset.on = String(on);
-        soundBtn.setAttribute("aria-pressed", String(on));
-        soundBtn.innerHTML = on
-          ? '<i class="bi bi-volume-up-fill"></i>'
-          : '<i class="bi bi-volume-mute-fill"></i>';
-        if (window.navigator.vibrate) navigator.vibrate(on ? 12 : 8);
+        if (soundBtn) {
+          soundBtn.dataset.on = String(on);
+          soundBtn.setAttribute("aria-pressed", String(on));
+          soundBtn.innerHTML = on
+            ? '<i class="bi bi-volume-up-fill"></i>'
+            : '<i class="bi bi-volume-mute-fill"></i>';
+        }
       }
 
-      soundBtn.addEventListener("click", function () {
+      if (soundBtn) soundBtn.addEventListener("click", function () {
         const on = track.paused ? play() : pause();
         setSoundUI(on);
       });
@@ -1422,22 +1699,31 @@
       }
 
       function blastParty() {
+        document.body.classList.add("blast-mode");
         spicy = true;
         setMood(true);
         setSpiceChip();
         if (track.paused) setSoundUI(play());
-        confettiBurst(W / 2, H * 0.16, 160);
-        confettiBurst(W * 0.05, H, 70, -Math.PI / 3, Math.PI / 3);
-        confettiBurst(W * 0.95, H, 70, -Math.PI + Math.PI / 3, Math.PI / 3);
-        for (let i = 0; i < 14; i++) {
-          setTimeout(() => sprinkle(rand(0, W), rand(0, H * 0.5), 10, 40), i * 70);
+        confettiBurst(W / 2, H * 0.16, 260);
+        confettiBurst(W * 0.05, H, 110, -Math.PI / 3, Math.PI / 3);
+        confettiBurst(W * 0.95, H, 110, -Math.PI + Math.PI / 3, Math.PI / 3);
+        for (let i = 0; i < 24; i++) {
+          setTimeout(() => sprinkle(rand(0, W), rand(0, H * 0.75), 18, 60), i * 70);
         }
-        sparkBurst(W / 2, H * 0.4, 40, 1.6);
+        sparkBurst(W / 2, H * 0.4, 100, 1.9);
+        if (automaticTimer) clearInterval(automaticTimer);
+        automaticTimer = setInterval(() => {
+          confettiBurst(rand(W * .08, W * .92), rand(H * .04, H * .38), 75);
+          sparkleAllDecor();
+        }, 1500);
         buzz([12, 40, 18]);
         shake();
       }
 
       function chillMode() {
+        document.body.classList.remove("blast-mode");
+        if (automaticTimer) clearInterval(automaticTimer);
+        automaticTimer = null;
         spicy = false;
         setMood(false);
         setSpiceChip();
@@ -1486,8 +1772,34 @@
         }
       }
 
+      function sparkleAllDecor() {
+        floaters.forEach((f) => sparkleAt(f.el, 10));
+      }
+
+      function launchGalaxy() {
+        if (launched) return;
+        launched = true;
+        document.body.classList.add("launched");
+        resize();
+        const playing = play();
+        setSoundUI(playing);
+        setTimeout(() => {
+          sparkleAllDecor();
+          sparkBurst(W / 2, H * .24, 150, 1.7);
+          confettiBurst(W / 2, H * .12, 240);
+          confettiBurst(W * .06, H * .78, 100, -Math.PI / 3, Math.PI / 2.5);
+          confettiBurst(W * .94, H * .78, 100, -Math.PI + Math.PI / 3, Math.PI / 2.5);
+          automaticTimer = setInterval(() => {
+            sparkleAllDecor();
+            sprinkle(rand(W * .08, W * .92), rand(H * .08, H * .78), 30, 70);
+            confettiBurst(rand(W * .12, W * .88), H * .08, 58);
+          }, 1300);
+        }, 700);
+      }
+
       const spiceChip = document.querySelector('.chip[data-action="spice"]');
       function setSpiceChip() {
+        if (!spiceChip) return;
         spiceChip.setAttribute("aria-pressed", String(spicy));
         spiceChip.querySelector("span").textContent = spicy ? "Spice" : "Chill";
       }
@@ -1534,8 +1846,7 @@
         }
       };
 
-      document.getElementById("blastBtn").addEventListener("click", blastParty);
-      document.getElementById("calmBtn").addEventListener("click", chillMode);
+      document.getElementById("launchBtn").addEventListener("click", launchGalaxy);
 
       document.querySelectorAll(".chip[data-action]").forEach(function (chip) {
         chip.addEventListener("click", function () {
@@ -1616,8 +1927,10 @@
       requestAnimationFrame(frame);
 
       setTimeout(function () {
-        confettiBurst(W / 2, H * 0.12, 70);
-        sparkleAt(document.querySelector(".card"), 26);
+        if (launched) {
+          confettiBurst(W / 2, H * 0.12, 70);
+          sparkleAt(document.querySelector(".card"), 26);
+        }
       }, 420);
     })();
   </script>
