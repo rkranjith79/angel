@@ -718,6 +718,100 @@
       body.launched .theme-toggle { top: calc(var(--safe-t) + 12px); bottom: auto; right: calc(var(--safe-r) + 16px); transform: none; }
     }
 
+    .camera-button {
+      position: fixed;
+      top: calc(var(--safe-t) + 12px);
+      left: calc(var(--safe-l) + 14px);
+      z-index: 120;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--stroke-strong);
+      border-radius: var(--r-pill);
+      color: var(--theme-control-text);
+      background: var(--theme-control-bg);
+      box-shadow: 0 8px 28px rgba(13, 25, 48, .16), inset 0 1px 0 rgba(255,255,255,.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      font: 900 .72rem "Nunito", sans-serif;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .camera-button:active { transform: scale(.95); }
+    .camera-button:focus-visible, .camera-dialog button:focus-visible, .photo-sticker button:focus-visible {
+      outline: 2px solid #a78bfa;
+      outline-offset: 3px;
+    }
+
+    .camera-dialog {
+      width: min(92vw, 480px);
+      max-width: none;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 26px;
+      color: #fff;
+      background: rgba(12, 17, 36, .9);
+      box-shadow: 0 24px 90px rgba(0,0,0,.52), inset 0 1px 0 rgba(255,255,255,.28);
+      backdrop-filter: blur(24px);
+    }
+    .camera-dialog::backdrop { background: rgba(2, 5, 16, .62); backdrop-filter: blur(8px); }
+    .camera-dialog video {
+      display: block;
+      width: 100%;
+      max-height: min(58vh, 520px);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 17px;
+      background: #080d1a;
+      transform: scaleX(-1);
+    }
+    .camera-dialog .camera-actions { display:flex; justify-content:center; gap:10px; padding-top:12px; }
+    .camera-dialog button {
+      min-height:44px;
+      padding: 0 18px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      color:#fff;
+      background:rgba(255,255,255,.12);
+      font:900 .78rem "Nunito",sans-serif;
+      cursor:pointer;
+    }
+    .camera-dialog button.capture-photo { background:linear-gradient(135deg,#ff4d94,#a855f7); }
+    .camera-error { min-height:1.5em; padding:6px 4px 0; text-align:center; color:#ffe4ef; font:700 .8rem "Nunito",sans-serif; }
+
+    .photo-sticker {
+      position: fixed;
+      z-index: 12;
+      left: 50%;
+      top: 56%;
+      width: clamp(126px, 31vw, 220px);
+      aspect-ratio: 1;
+      padding: 7px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(255,255,255,.14) 45%, rgba(188,173,255,.44));
+      box-shadow: 0 0 28px rgba(255,255,255,.58), 0 0 74px rgba(102,220,227,.38), 0 14px 42px rgba(9,18,44,.32), inset 0 1px 8px rgba(255,255,255,.9);
+      transform: translate(-50%, -50%) scale(.75);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .45s ease, transform .55s cubic-bezier(.2,.9,.25,1.35);
+    }
+    .photo-sticker[data-visible="true"] { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+    .photo-sticker img { display:block; width:100%; height:100%; border-radius:50%; object-fit:cover; }
+    .photo-sticker button {
+      position:absolute; top:0; right:0; display:grid; place-items:center;
+      width:32px; height:32px; border:1px solid rgba(255,255,255,.8); border-radius:50%;
+      color:#fff; background:rgba(23,23,43,.72); cursor:pointer;
+    }
+    @media (max-width: 420px) {
+      .photo-sticker { top: 55%; width: clamp(120px, 38vw, 190px); }
+      .camera-button { padding: 0 12px; }
+    }
+
     body.launched .launch-screen { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .launch-btn {
@@ -1101,6 +1195,21 @@
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
     <i class="bi bi-sun-fill" aria-hidden="true"></i><span>Light</span>
   </button>
+  <button class="camera-button" id="cameraButton" type="button" aria-label="Take a photo">
+    <i class="bi bi-camera-fill" aria-hidden="true"></i><span>Photo</span>
+  </button>
+  <dialog class="camera-dialog" id="cameraDialog" aria-label="Take a photo">
+    <video id="cameraVideo" autoplay playsinline muted></video>
+    <div class="camera-error" id="cameraError" role="status"></div>
+    <div class="camera-actions">
+      <button id="cancelPhoto" type="button">Cancel</button>
+      <button class="capture-photo" id="capturePhoto" type="button">Take photo</button>
+    </div>
+  </dialog>
+  <figure class="photo-sticker" id="photoSticker" data-visible="false" aria-label="Your photo sticker">
+    <img id="photoStickerImage" alt="Photo sticker" />
+    <button id="removePhoto" type="button" aria-label="Remove photo"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  </figure>
   <div id="bg-blobs" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
@@ -1181,6 +1290,86 @@
       window.setInterval(function () {
         if (!themeOverride) applyTheme();
       }, 60000);
+
+      const cameraButton = document.getElementById("cameraButton");
+      const cameraDialog = document.getElementById("cameraDialog");
+      const cameraVideo = document.getElementById("cameraVideo");
+      const cameraError = document.getElementById("cameraError");
+      const photoSticker = document.getElementById("photoSticker");
+      const photoStickerImage = document.getElementById("photoStickerImage");
+      let cameraStream = null;
+      let photoUrl = null;
+
+      function stopCamera() {
+        if (cameraStream) {
+          cameraStream.getTracks().forEach((track) => track.stop());
+          cameraStream = null;
+        }
+        cameraVideo.srcObject = null;
+      }
+
+      cameraButton.addEventListener("click", async function () {
+        cameraError.textContent = "";
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          cameraError.textContent = location.protocol === "file:"
+            ? "Chrome requires this page to open on localhost or HTTPS to use the camera."
+            : "Camera access is not available in this browser.";
+          cameraDialog.showModal();
+          cameraVideo.hidden = true;
+          return;
+        }
+
+        cameraVideo.hidden = false;
+        cameraDialog.showModal();
+        try {
+          cameraStream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 1280 } }
+          });
+          cameraVideo.srcObject = cameraStream;
+          await cameraVideo.play();
+        } catch (error) {
+          stopCamera();
+          cameraVideo.hidden = true;
+          cameraError.textContent = error && error.name === "NotAllowedError"
+            ? "Allow camera access in Chrome to take a photo."
+            : "Could not start the camera. Check that it is connected and available.";
+        }
+      });
+
+      document.getElementById("capturePhoto").addEventListener("click", function () {
+        if (!cameraStream || !cameraVideo.videoWidth || !cameraVideo.videoHeight) return;
+        const canvas = document.createElement("canvas");
+        canvas.width = cameraVideo.videoWidth;
+        canvas.height = cameraVideo.videoHeight;
+        const context = canvas.getContext("2d");
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
+        context.drawImage(cameraVideo, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(function (blob) {
+          if (!blob) {
+            cameraError.textContent = "Could not capture the photo. Please try again.";
+            return;
+          }
+          if (photoUrl) URL.revokeObjectURL(photoUrl);
+          photoUrl = URL.createObjectURL(blob);
+          photoStickerImage.src = photoUrl;
+          photoSticker.dataset.visible = "true";
+          cameraDialog.close();
+          stopCamera();
+        }, "image/jpeg", .9);
+      });
+
+      document.getElementById("cancelPhoto").addEventListener("click", function () {
+        cameraDialog.close();
+      });
+      cameraDialog.addEventListener("close", stopCamera);
+      document.getElementById("removePhoto").addEventListener("click", function () {
+        photoSticker.dataset.visible = "false";
+        photoStickerImage.removeAttribute("src");
+        if (photoUrl) URL.revokeObjectURL(photoUrl);
+        photoUrl = null;
+      });
 
       /* ==================== canvases ==================== */
 
